@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA VI - Countdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --google-blue: #4285f4;
+            --google-green: #34a853;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            min-height: 100vh;
+            font-family: 'Google Sans', -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 24px;
+            /* CHANGE THE BACKGROUND IMAGE URL BELOW */
+            background: url('file:///home/ubuntu/.openclaw/media/inbound/wp14002261-4k-gta-6-wallpapers---491829aa-d9c3-41e7-b4bd-04299b4b3bd7.jpg') center center / cover no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        /* Optional: Add GTA VI image overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/5/53/GTA_V_logo.svg') center/contain no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(13, 17, 23, 0.75);
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+            margin-bottom: 48px;
+            letter-spacing: 0.5px;
+        }
+        
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 24px 16px;
+            transition: transform 0.2s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .number {
+            font-size: 40px;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+        
+        .release-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .release-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--google-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--google-green); }
+            50% { opacity: 0.5; }
+        }
+        
+        .release-text {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .release-text strong {
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .footer {
+            margin-top: 48px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        @media (max-width: 480px) {
+            .countdown { grid-template-columns: repeat(2, 1fr); }
+            .number { font-size: 32px; }
+            .logo { font-size: 48px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">GTA VI</h1>
+        <p class="subtitle">Grand Theft Auto VI</p>
+        
+        <div class="countdown">
+            <div class="card">
+                <div class="number" id="d">000</div>
+                <div class="label">Days</div>
+            </div>
+            <div class="card">
+                <div class="number" id="h">00</div>
+                <div class="label">Hours</div>
+            </div>
+            <div class="card">
+                <div class="number" id="m">00</div>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="card">
+                <div class="number" id="s">00</div>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
+        
+        <div class="release-card">
+            <div class="release-dot"></div>
+            <span class="release-text"><strong>November 19, 2026</strong> · PS5 & Xbox</span>
+        </div>
+        
+        <div class="footer">Rockstar Games</div>
+    </div>
+
+    <script>
+        const target = new Date('2026-11-19').getTime();
+        
+        function update() {
+            const n = new Date().getTime();
+            const x = target - n;
+            if (x < 0) { document.querySelector('.container').innerHTML = '<h1 class="logo" style="font-size:36px">GTA VI</h1><p class="subtitle" style="margin-top:16px">has been officially released on</p><div class="release-card" style="margin-top:24px"><div class="release-dot"></div><span class="release-text"><strong>November 19, 2026</strong> · on PS5 & Xbox</span></div>'; return; }
+            document.getElementById('d').textContent = String(Math.floor(x/86400000)).padStart(3,'0');
+            document.getElementById('h').textContent = String(Math.floor((x%86400000)/3600000)).padStart(2,'0');
+            document.getElementById('m').textContent = String(Math.floor((x%3600000)/60000)).padStart(2,'0');
+            document.getElementById('s').textContent = String(Math.floor((x%60000)/1000)).padStart(2,'0');
+        }
+        update(); setInterval(update, 1000);
+    </script>
+</body>
+</html>
