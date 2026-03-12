@@ -12,154 +12,157 @@
         :root {
             --google-blue: #4285f4;
             --google-green: #34a853;
+            --container-bg: rgba(13, 17, 23, 0.7);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.12);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             min-height: 100vh;
-            font-family: 'Google Sans', -apple-system, sans-serif;
+            font-family: 'Google Sans', -apple-system, system-ui, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             color: #fff;
-            padding: 24px;
-            /* CHANGE THE BACKGROUND IMAGE URL BELOW */
-            background: url('src/images/background.png') center center / cover no-repeat;
-            background-size: cover;
-            background-position: center;
+            padding: clamp(16px, 5vw, 40px);
+            background: url('src/images/background.png') center center / cover no-repeat fixed;
             position: relative;
-        }
-        
-        /* Optional: Add GTA VI image overlay */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 120px;
-            height: 120px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/5/53/GTA_V_logo.svg') center/contain no-repeat;
-            opacity: 0.3;
-            z-index: 0;
+            overflow-x: hidden;
         }
         
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(13, 17, 23, 0.75);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
             z-index: 0;
         }
         
         .container {
-            max-width: 600px;
+            max-width: 800px;
             width: 100%;
             text-align: center;
             position: relative;
             z-index: 1;
+            padding: clamp(24px, 8vw, 64px);
+            background: var(--container-bg);
+            border-radius: clamp(20px, 4vw, 40px);
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         
         .logo {
-            font-size: 64px;
+            font-size: clamp(48px, 12vw, 84px);
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
             margin-bottom: 8px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
         
         .subtitle {
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 16px);
             color: rgba(255,255,255,0.7);
             font-weight: 400;
-            margin-bottom: 48px;
-            letter-spacing: 0.5px;
+            margin-bottom: clamp(32px, 6vw, 56px);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
         .countdown {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 48px;
+            gap: clamp(12px, 2.5vw, 24px);
+            margin-bottom: clamp(32px, 6vw, 56px);
         }
         
         .card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 16px;
-            padding: 24px 16px;
-            transition: transform 0.2s ease;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: clamp(12px, 2vw, 24px);
+            padding: clamp(16px, 4vw, 32px) clamp(8px, 2vw, 16px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.12);
         }
         
         .number {
-            font-size: 40px;
-            font-weight: 500;
+            font-size: clamp(28px, 7vw, 56px);
+            font-weight: 700;
             color: #fff;
             line-height: 1;
             font-variant-numeric: tabular-nums;
         }
         
         .label {
-            font-size: 12px;
-            color: rgba(255,255,255,0.6);
+            font-size: clamp(9px, 1.5vw, 12px);
+            color: rgba(255,255,255,0.5);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-top: 12px;
             font-weight: 500;
         }
         
         .release-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 12px;
-            padding: 16px 24px;
+            background: rgba(52, 168, 83, 0.1);
+            border: 1px solid rgba(52, 168, 83, 0.2);
+            border-radius: 50px;
+            padding: 12px 24px;
             display: inline-flex;
             align-items: center;
             gap: 12px;
         }
         
         .release-dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             background: var(--google-green);
             border-radius: 50%;
+            box-shadow: 0 0 10px var(--google-green);
             animation: pulse 2s ease-in-out infinite;
         }
         
         @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--google-green); }
-            50% { opacity: 0.5; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
         }
         
         .release-text {
-            font-size: 14px;
-            color: rgba(255,255,255,0.8);
+            font-size: clamp(13px, 2vw, 15px);
+            color: rgba(255,255,255,0.9);
         }
         
         .release-text strong {
             color: #fff;
-            font-weight: 500;
+            font-weight: 600;
         }
         
         .footer {
-            margin-top: 48px;
-            font-size: 12px;
-            color: rgba(255,255,255,0.5);
+            margin-top: clamp(32px, 6vw, 48px);
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .countdown { grid-template-columns: repeat(2, 1fr); }
-            .number { font-size: 32px; }
-            .logo { font-size: 48px; }
+            .container { padding: 40px 24px; border-radius: 32px; }
+        }
+
+        @media (max-width: 360px) {
+            .countdown { gap: 8px; }
+            .card { padding: 16px 8px; }
+            .logo { font-size: 40px; }
+        }
+
+        @media (min-width: 1440px) {
+            .container { max-width: 1000px; }
         }
     </style>
 </head>
