@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GTA VI - Countdown</title>
+    <meta name="description" content="A premium, immersive countdown webpage for the highly anticipated Grand Theft Auto VI release. Featuring a live countdown, background slideshow, and modern glassmorphism design.">
+    <meta name="theme-color" content="#0d1117">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/tanvirr007/gta-vi-countdown">
+    <meta property="og:title" content="GTA VI - Countdown">
+    <meta property="og:description" content="Experience the anticipation with our premium, live countdown to the launch of GTA VI.">
+    <meta property="og:image" content="src/images/background/background-1.png">
+
     <link rel="icon" type="image/png" href="src/images/favicon/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -407,6 +417,21 @@
         }
 
         setInterval(nextSlide, 8000); // Change image every 8 seconds
+
+        // Image Preloading for smoother transitions
+        function preloadImages() {
+            const imageUrls = [
+                'src/images/background/background-1.png',
+                'src/images/background/background-2.png',
+                'src/images/background/background-3.png',
+                'src/images/background/background-4.png'
+            ];
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        }
+        window.addEventListener('load', preloadImages);
     </script>
 </body>
 
