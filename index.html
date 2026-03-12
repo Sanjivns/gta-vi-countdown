@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +17,13 @@
             --card-bg: rgba(255, 255, 255, 0.08);
             --border: rgba(255, 255, 255, 0.12);
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             min-height: 100vh;
             font-family: 'Google Sans', -apple-system, system-ui, sans-serif;
@@ -58,15 +63,18 @@
         .bg-slide.active {
             opacity: 1;
         }
-        
+
         body::before {
             content: '';
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
             z-index: 0;
         }
-        
+
         .container {
             max-width: 800px;
             width: 100%;
@@ -77,33 +85,33 @@
             background: var(--container-bg);
             border-radius: clamp(20px, 4vw, 40px);
             border: 1px solid var(--border);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
-        
+
         .logo {
             font-size: clamp(48px, 12vw, 84px);
             font-weight: 700;
             letter-spacing: -2px;
             margin-bottom: 8px;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
-        
+
         .subtitle {
             font-size: clamp(12px, 2.5vw, 16px);
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             font-weight: 400;
             margin-bottom: clamp(32px, 6vw, 56px);
             letter-spacing: 2px;
             text-transform: uppercase;
         }
-        
+
         .countdown {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: clamp(12px, 2.5vw, 24px);
             margin-bottom: clamp(32px, 6vw, 56px);
         }
-        
+
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -111,12 +119,12 @@
             padding: clamp(16px, 4vw, 32px) clamp(8px, 2vw, 16px);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        
+
         .card:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.12);
         }
-        
+
         .number {
             font-size: clamp(28px, 7vw, 56px);
             font-weight: 700;
@@ -124,63 +132,69 @@
             line-height: 1;
             font-variant-numeric: tabular-nums;
         }
-        
+
         .label {
             font-size: clamp(9px, 1.5vw, 12px);
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-top: 12px;
             font-weight: 500;
         }
-        
+
         .release-card {
-            background: rgba(52, 168, 83, 0.1);
-            border: 1px solid rgba(52, 168, 83, 0.2);
-            border-radius: 50px;
-            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
             gap: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        
+
+        .release-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 500;
+        }
+
+        .release-value {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(16px, 3vw, 20px);
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
         .release-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background: var(--google-green);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--google-green);
-            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 15px var(--google-green);
+            animation: pulse 2.5s ease-in-out infinite;
         }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-        
-        .release-text {
-            font-size: clamp(13px, 2vw, 15px);
-            color: rgba(255,255,255,0.9);
-        }
-        
-        .release-text strong {
-            color: #fff;
-            font-weight: 600;
-        }
-        
+
         .footer {
             margin-top: clamp(32px, 6vw, 48px);
             font-size: 11px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
             letter-spacing: 2px;
             text-transform: uppercase;
         }
-        
+
         /* Premium Release State Styles */
         .logo-released {
             font-size: clamp(64px, 15vw, 120px);
             font-weight: 800;
-            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.5) 100%);
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.5) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -189,8 +203,13 @@
         }
 
         @keyframes shimmer {
-            0% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
-            100% { filter: drop-shadow(0 0 30px rgba(255,255,255,0.5)); }
+            0% {
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+            }
         }
 
         .status-badge {
@@ -204,7 +223,7 @@
             font-size: 14px;
             display: inline-block;
             margin-bottom: 32px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
         .cta-button {
@@ -224,26 +243,43 @@
 
         .cta-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255,255,255,0.4);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
             background: #f0f0f0;
         }
 
         @media (max-width: 600px) {
-            .countdown { grid-template-columns: repeat(2, 1fr); }
-            .container { padding: 40px 24px; border-radius: 32px; }
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container {
+                padding: 40px 24px;
+                border-radius: 32px;
+            }
         }
 
         @media (max-width: 360px) {
-            .countdown { gap: 8px; }
-            .card { padding: 16px 8px; }
-            .logo { font-size: 40px; }
+            .countdown {
+                gap: 8px;
+            }
+
+            .card {
+                padding: 16px 8px;
+            }
+
+            .logo {
+                font-size: 40px;
+            }
         }
 
         @media (min-width: 1440px) {
-            .container { max-width: 1000px; }
+            .container {
+                max-width: 1000px;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="bg-slideshow">
         <div class="bg-slide active" style="background-image: url('src/images/background/background-1.png')"></div>
@@ -254,7 +290,7 @@
     <div class="container">
         <h1 class="logo">GTA VI</h1>
         <p class="subtitle">Grand Theft Auto VI</p>
-        
+
         <div class="countdown">
             <div class="card">
                 <div class="number" id="d">000</div>
@@ -273,38 +309,44 @@
                 <div class="label">Seconds</div>
             </div>
         </div>
-        
+
         <div class="release-card">
-            <div class="release-dot"></div>
-            <span class="release-text"><strong>November 19, 2026</strong></span>
+            <div class="release-label">Arriving</div>
+            <div class="release-value">
+                <div class="release-dot"></div>
+                <span>November 19, 2026</span>
+            </div>
         </div>
-        
+
         <div class="footer">Rockstar Games</div>
     </div>
 
     <script>
         const target = new Date('2026-11-19').getTime();
-        
+
         function update() {
             const n = new Date().getTime();
             const x = target - n;
-            if (x < 0) { 
+            if (x < 0) {
                 document.querySelector('.container').innerHTML = `
                     <div class="status-badge">Out Now</div>
                     <h1 class="logo-released">GTA VI</h1>
                     <p class="subtitle" style="margin-top:0">Experience the next chapter</p>
                     <div class="release-card" style="margin-top:24px">
-                        <div class="release-dot"></div>
-                        <span class="release-text">Launched <strong>November 19, 2026</strong></span>
+                        <div class="release-label">Launch Status</div>
+                        <div class="release-value">
+                            <div class="release-dot"></div>
+                            <span>Launched November 19, 2026</span>
+                        </div>
                     </div>
                     <a href="https://www.rockstargames.com/VI" target="_blank" class="cta-button">Visit Rockstar Games</a>
-                `; 
-                return; 
+                `;
+                return;
             }
-            document.getElementById('d').textContent = String(Math.floor(x/86400000)).padStart(3,'0');
-            document.getElementById('h').textContent = String(Math.floor((x%86400000)/3600000)).padStart(2,'0');
-            document.getElementById('m').textContent = String(Math.floor((x%3600000)/60000)).padStart(2,'0');
-            document.getElementById('s').textContent = String(Math.floor((x%60000)/1000)).padStart(2,'0');
+            document.getElementById('d').textContent = String(Math.floor(x / 86400000)).padStart(3, '0');
+            document.getElementById('h').textContent = String(Math.floor((x % 86400000) / 3600000)).padStart(2, '0');
+            document.getElementById('m').textContent = String(Math.floor((x % 3600000) / 60000)).padStart(2, '0');
+            document.getElementById('s').textContent = String(Math.floor((x % 60000) / 1000)).padStart(2, '0');
         }
         update(); setInterval(update, 1000);
 
@@ -321,4 +363,5 @@
         setInterval(nextSlide, 8000); // Change image every 8 seconds
     </script>
 </body>
+
 </html>
