@@ -183,11 +183,40 @@
         }
 
         .footer {
-            margin-top: clamp(32px, 6vw, 48px);
+            margin-top: clamp(24px, 4vw, 32px);
             font-size: 11px;
             color: rgba(255, 255, 255, 0.4);
             letter-spacing: 2px;
             text-transform: uppercase;
+        }
+
+        .disclaimer {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 10px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.25);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .credits {
+            margin-top: 16px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .credits a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .credits a:hover {
+            color: #fff;
         }
 
         /* Premium Release State Styles */
@@ -319,6 +348,16 @@
         </div>
 
         <div class="footer">Rockstar Games</div>
+
+        <div class="disclaimer">
+            This is an unofficial, fan-made countdown. GTA and all related trademarks are the property of Take-Two
+            Interactive and Rockstar Games. This site is not affiliated with or endorsed by Take-Two Interactive or
+            Rockstar Games.
+            <div class="credits">
+                Made by <a href="https://github.com/Sanjivns" target="_blank">sanjivns</a> and <a
+                    href="https://github.com/tanvirr007" target="_blank">tanvirr007</a>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -340,6 +379,13 @@
                         </div>
                     </div>
                     <a href="https://www.rockstargames.com/VI" target="_blank" class="cta-button">Visit Rockstar Games</a>
+                    <div class="footer" style="margin-top:40px">Rockstar Games</div>
+                    <div class="disclaimer">
+                        This is an unofficial, fan-made countdown. GTA and all related trademarks are the property of Take-Two Interactive and Rockstar Games. This site is not affiliated with or endorsed by Take-Two Interactive or Rockstar Games.
+                        <div class="credits">
+                            Made by <a href="https://github.com/Sanjivns" target="_blank">sanjivns</a> and <a href="https://github.com/tanvirr007" target="_blank">tanvirr007</a>
+                        </div>
+                    </div>
                 `;
                 return;
             }
